@@ -50,6 +50,15 @@
           }
         }
 
+        const [time, setTime] = React.useState(dayjs().format('HH:mm:ss'));
+
+        React.useEffect(() => {
+          setInterval(() => {
+            setTime(dayjs().format('HH:mm:ss'));
+            console.log('run code')
+          }, 1000);
+        },[]);
+
         return(
           <>
             <p>Hello, welcome to my website</p>
@@ -62,6 +71,8 @@
             </div>
             <button className="login-sign-buttons">Login</button>
             <button className="login-sign-buttons">Sign up</button>
+
+            <p>Current time: {time}</p>
           </>
         );
       }
