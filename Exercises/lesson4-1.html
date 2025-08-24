@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS with React and Hooks</title>
+    <style>
+      .on-button, 
+      .off-button {
+        background-color: rgb(25, 135, 84);
+        border: none;
+        color: white;
+        padding: 10px 15px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .off-button{
+        background-color: rgb(220, 53, 69);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="js-container"></div>
+
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+
+      
+
+      function App() {
+        const [isButtonOn, setisButtonOn] = React.useState(true);
+
+        function switchButtonOn() {
+          if(isButtonOn) {
+            setisButtonOn(false);
+          } else {
+            setisButtonOn(true);
+          }
+        }
+
+        return (
+          <>
+            <button 
+            className={isButtonOn ? 'on-button' : 'off-button'} 
+            onClick={switchButtonOn}
+            >{isButtonOn ? 'ON' : 'OFF'}</button>
+          </>
+      )};
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(<App />);
+    </script>
+  </body>
+</html>

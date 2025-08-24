@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>React Basics, JSX</title>
+  </head>
+  <body>
+    <div class="js-container"></div>
+    <div class="js-clock"></div>
+
+    <script src="https://unpkg.com/supersimpledev/dayjs.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react.js"></script>
+    <script src="https://unpkg.com/supersimpledev/react-dom.js"></script>
+
+    <script src="https://unpkg.com/supersimpledev/babel.js"></script>
+    <script type="text/babel">
+      const productCost = 10 + 2 * 8;
+      const shippingCost = 5;
+      const totalCost = productCost + shippingCost;
+      console.log(productCost);
+      const today = dayjs().format('MMMM D');
+      const currentTime = dayjs().format('HH:mm:ss');
+
+      const div = (
+        <div>
+          <button>Good job!</button>
+          <p>My name is Farzona</p>
+          <p>Cotton socks</p>
+          <p>Price $10</p>
+          <button>Add to Cart</button>
+          <p>Product cost: ${productCost}</p>
+          <p>Shipping cost: ${shippingCost}</p>
+          <p>Total cost: ${totalCost}</p>
+          <button>Place your order</button>
+          <p>Today is {today}</p>
+          <p>Current time: {currentTime}</p>
+        </div>
+      );
+
+      const container = document.querySelector('.js-container');
+      ReactDOM.createRoot(container).render(div);
+
+      const paragraph = <p>Current time: {dayjs().format('HH:mm:ss')}</p>;
+
+      const clock = document.querySelector('.js-clock');
+      const root = ReactDOM.createRoot(clock);
+      root.render(paragraph);
+
+      setInterval(() => {
+        const paragraph = <p>Current time: {dayjs().format('HH:mm:ss')}</p>;
+        root.render(paragraph);
+      }, 1000);
+    </script>
+  </body>
+</html>
